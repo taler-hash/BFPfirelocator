@@ -1,0 +1,31 @@
+services:
+  db:
+    container_name: db
+    image: mysql:9.0
+    ports:
+      - 2000:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: bfp_db
+    volumes:
+      - ./db:/var/lib/mysql
+    networks:
+    - bfp_network
+  app:
+    container_name: app
+    image: php:8.2-fpm
+    volumes:
+      - ./app:/var/www/html/app
+    ports:
+      - 2001:8000
+      - 5173:5173
+      - 9000:9000
+    build:
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    networks:
+      - bfp_network
+networks:
+  bfp_network:
+    driver: bridge
