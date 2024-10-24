@@ -31,7 +31,7 @@ Route::middleware(['auth', 'verified'])
         Route::post('/', 'store')->name('stations.store');
         Route::get('/{id}', 'show')->name('stations.show');
         Route::put('/{id}', 'edit')->name('stations.edit');
-        Route::put('/{id}', 'delete')->name('stations.delete');
+        Route::delete('/{id}', 'delete')->name('stations.delete');
     });
 
     //AdminStaff
@@ -42,7 +42,7 @@ Route::middleware(['auth', 'verified'])
         Route::get('/', 'index')->name('adminstaff.index');
         Route::post('/', 'store')->name('adminstaff.store');
         Route::put('/{id}', 'edit')->name('adminstaff.edit');
-        Route::put('/{id}', 'delete')->name('adminstaff.delete');
+        Route::delete('/{id}', 'delete')->name('adminstaff.delete');
     });
 
     //Brgy Staff

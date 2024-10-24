@@ -13,24 +13,34 @@ class StationService
         $model = new Station();
 
         return Station::whereAny($model->getFillable(), 'LIKE', "%{$request->searchString}%")
-        ->orderBy($request->sortBy, $request->sortType)
-        ->paginate($request->rows);
+            ->orderBy($request->sortBy, $request->sortType)
+            ->paginate($request->rows);
     }
 
-    public function storeStation($request) {
+    public function storeStation($request)
+    {
         Station::create($request->all());
     }
 
-    public function getUsers($id, $request) {
+    public function editStation($id, $request) {
+        Station::find($id)->update($request->all());
+    }
+
+    public function deleteStation($id) {
+        Station::find($id)->delete();
+    }
+
+    public function getUsers($id, $request)
+    {
         $model = new User();
 
         return User::where('station_id', $id)
-        ->with('roles')
-        ->whereHas('roles', function ($q) use ($request) {
-            $q->where('name' , $request->role);
-        })
-        ->whereAny($model->getFillable(), 'LIKE', "%{$request->searchString}%")
-        ->orderBy($request->sortBy, $request->sortType)
-        ->paginate($request->rows);
+            ->with('roles')
+            ->whereHas('roles', function ($q) use ($request) {
+                $q->where('name', $request->role);
+            })
+            ->whereAny($model->getFillable(), 'LIKE', "%{$request->searchString}%")
+            ->orderBy($request->sortBy, $request->sortType)
+            ->paginate($request->rows);
     }
 }

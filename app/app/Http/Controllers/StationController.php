@@ -37,11 +37,11 @@ class StationController extends Controller
     }
 
     public function edit($id, EditStationRequest $request) {
-
+        $this->stationService->editStation($id, $request);
     }
 
-    public function delete() {
-
+    public function delete($id) {
+        $this->stationService->deleteStation($id);
     }
     
 

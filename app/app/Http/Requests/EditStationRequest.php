@@ -22,7 +22,10 @@ class EditStationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required, unique']
+            'name' => ['required', 'unique:stations,name, '. $this->route('id')],
+            'location' => ['required', 'unique:stations,location, '. $this->route('id')],
+            'longitude' => ['required', 'unique:stations,longitude, '. $this->route('id')],
+            'latitude' => ['required', 'unique:stations,latitude, '. $this->route('id')]
         ];
     }
 }

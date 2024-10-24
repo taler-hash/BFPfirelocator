@@ -11,6 +11,7 @@ import PrimeVue from 'primevue/config';
 import Aura from '@/presets/aura';
 import ToastService from 'primevue/toastservice';
 import Tooltip from 'primevue/tooltip';
+import ConfirmationService from 'primevue/confirmationservice';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -30,6 +31,7 @@ createInertiaApp({
                 pt: Aura,
             })
             .use(ToastService)
+            .use(ConfirmationService)
             .directive('tooltip', Tooltip)
             .mount(el);
     },
