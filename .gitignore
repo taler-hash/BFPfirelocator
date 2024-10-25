@@ -1,4 +1,4 @@
-/db*
+/db
 /app/.gitignore
 /app/node_modules*
 /app/vendor*
