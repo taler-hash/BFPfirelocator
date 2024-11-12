@@ -10,7 +10,7 @@
                     </div>
                     <div class="flex flex-col gap-2">
                         <label for="location">Location</label>
-                        <InputText id="location" v-model="form.location" aria-describedby="location-help" required />
+                        <InputText id="location" v-model="form.location" aria-describedby="location-help" />
                         <InputError :message="form.errors.location" />
                     </div>
                     <div class="flex flex-col gap-2">
@@ -54,11 +54,12 @@ import { useToast } from 'primevue/usetoast';
 const reloadTable = inject<any>('reloadTable')
 const toast = useToast()
 const visible = ref<boolean>(false)
+
 const form = useForm<StationTypes>({
     name: '',
     location: '',
-    longitude: null,
-    latitude: null
+    longitude: undefined,
+    latitude: undefined
 })
 
 function open(station: StationTypes) {

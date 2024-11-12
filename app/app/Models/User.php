@@ -7,11 +7,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable, HasRoles;
+    use LogsActivity, HasFactory, Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -21,7 +23,13 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'user_name',
-        'position'
+        'position',
+        'station_id',
+        'password',
+    ];
+
+    protected $appends = [
+        'role',
     ];
 
     /**
@@ -47,11 +55,29 @@ class User extends Authenticatable
         ];
     }
 
-    public function station() {
+    public function station()
+    {
         return $this->belongsTo(Station::class);
     }
 
-    public function bookings() {
+    public function bookings()
+    {
         return $this->hasMany(Booking::class);
+    }
+
+    public function bookingResponders()
+    {
+        return $this->hasMany(BookingResponder::class);
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['name', 'user_name', 'station_id']);
+        // Chain fluent methods for configuration options
+    }
+
+    public function getRoleAttribute() {
+        return $this->roles()->pluck('name')[0];
     }
 }

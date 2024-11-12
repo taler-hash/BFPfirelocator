@@ -14,10 +14,13 @@ return new class extends Migration
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('station_id')->references('id')->on('stations')->onDelete('cascade');
             $table->string('location_name');
             $table->float('longitude');
             $table->float('latitude');
             $table->string('status');
+            $table->string('reason')->nullable();
+            $table->date('booking_date');
             $table->timestamps();
         });
     }

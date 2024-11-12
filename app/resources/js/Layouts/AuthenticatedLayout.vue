@@ -154,7 +154,7 @@ const links = ref<{ label: string, route: string, canSee: boolean }[]>([
     {
         label: 'Dashboard',
         route: 'dashboard',
-        canSee: true
+        canSee: page.props.auth.user.roles.some((v: any) => v.name !== 'responder')
     },
     {
         label: 'Stations',
@@ -163,18 +163,23 @@ const links = ref<{ label: string, route: string, canSee: boolean }[]>([
     },
     {
         label: 'Admin Staff',
-        route: 'adminstaff.display',
+        route: 'admin_staff.display',
         canSee: page.props.auth.user.roles.some((v: any) => v.name === 'admin')
     },
     {
         label: 'Brgy Staff',
-        route: 'brgystaff.display',
-        canSee: page.props.auth.user.roles.some((v: any) => v.name === 'admin_staff')
+        route: 'brgy_staff.display',
+        canSee: (['admin_staff']).includes(page.props.auth.user.role)
     },
     {
         label: 'Responders',
         route: 'responders.display',
-        canSee: page.props.auth.user.roles.some((v: any) => v.name === 'admin_staff')
+        canSee: (['admin_staff']).includes(page.props.auth.user.role)
+    },
+    {
+        label: 'Bookings',
+        route: 'bookings.display',
+        canSee: true
     },
 ])
 </script>

@@ -75,3 +75,11 @@
     --p-text-muted-color: var(--p-surface-400);
     --p-text-hover-muted-color: var(--p-surface-300);
 }
+
+.p-badge.ongoing {
+    @apply bg-purple-700
+}
+
+.leaflet-routing-alternatives-container {
+    @apply hidden
+}

@@ -1,5 +1,8 @@
 FROM php:8.2-fpm
 
+# Inorder to run reverb
+RUN docker-php-ext-configure pcntl --enable-pcntl && docker-php-ext-install pcntl
+
 # Install system dependencies and PHP extensions
 RUN apt-get update && apt-get install -y \
     libpng-dev \

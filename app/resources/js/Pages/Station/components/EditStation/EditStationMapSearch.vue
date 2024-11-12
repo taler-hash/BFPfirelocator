@@ -84,7 +84,6 @@ async function get() {
 }
 
 async function selectLocation(e: ResultTypes) {
-    console.log(setView)
     if(setView) {
         setView({
             latitude: +e.lat,

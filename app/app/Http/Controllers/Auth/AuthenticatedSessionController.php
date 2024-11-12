@@ -32,7 +32,9 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-
+        if($request->user()->roles[0]->name === 'responder') {
+            return redirect(route('bookings.display'));
+        }
         return redirect()->intended(route('dashboard', absolute: false));
     }
 

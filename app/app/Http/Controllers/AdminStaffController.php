@@ -9,7 +9,7 @@ class AdminStaffController extends Controller
 {
 
     public function display() {
-        return Inertia::render('AdminStaff/adminStaff');
+        return Inertia::render('AdminStaff/AdminStaff');
     }
 
     public function index() {

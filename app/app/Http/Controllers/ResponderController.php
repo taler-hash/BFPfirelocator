@@ -7,8 +7,8 @@ use Inertia\Inertia;
 
 class ResponderController extends Controller
 {
-    public function index() {
-        return Inertia::render('Responder/responder');
+    public function display() {
+        return Inertia::render('Responder/Responder');
     }
 
     public function create() {

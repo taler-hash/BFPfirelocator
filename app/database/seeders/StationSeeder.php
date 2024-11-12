@@ -33,5 +33,7 @@ class StationSeeder extends Seeder
             'longitude' => 123.939707,
             'latitude' => 10.3243386
         ]);
+
+        Station::factory()->count(50)->create();
     }
 }

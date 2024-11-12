@@ -2,10 +2,10 @@ import { InjectionKey } from "vue"
 
 interface StationTypes {
     id?: number,
-    name: string,
-    location: string,
-    longitude: number|null,
-    latitude: number|null,
+    name?: string,
+    location?: string,
+    longitude?: number|undefined,
+    latitude?: number|undefined,
     updated_at?: string,
     created_at?: string
 }

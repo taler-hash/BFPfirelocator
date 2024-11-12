@@ -12,7 +12,6 @@ import { inject, onMounted, provide, ref } from 'vue';
 import EditStationMapSearch from './EditStationMapSearch.vue';
 import { ViewTypes } from '../../types/stationTypes';
 
-
 const map = ref<any>()
 const setCoords = inject<any>('setCoords')
 const form = inject<any>('form')

@@ -31,7 +31,7 @@
                 </div>
                 <div class="ml-2 w-[320px] border overflow-hidden mt-4 sm:mt-0">
                     <div class="w-full h-96">
-                        <StoreStationMap></StoreStationMap>
+                        <GetCoordsMap v-model:latitude="form.latitude" v-model:longitude="form.longitude"/>
                     </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@ import InputNumber from 'primevue/inputnumber';
 import InputError from '@/Components/InputError.vue';
 import { useForm } from '@inertiajs/vue3';
 import { StationTypes } from '../../types/stationTypes';
-import StoreStationMap from './StoreStationMap.vue';
+import GetCoordsMap from '@/Components/GetCoordsMap/GetCoordsMap.vue';
 import { useToast } from 'primevue/usetoast';
 
 const reloadTable = inject<any>('reloadTable')
@@ -57,8 +57,8 @@ const visible = ref<boolean>(false)
 const form = useForm<StationTypes>({
     name: '',
     location: '',
-    longitude: null,
-    latitude: null
+    longitude: undefined,
+    latitude: undefined
 })
 
 function open() {

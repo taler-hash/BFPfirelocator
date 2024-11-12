@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('position')->nullable();
             $table->foreignId('station_id')->references('id')->on('stations')->onDelete('cascade');
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('status')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

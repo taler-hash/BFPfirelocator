@@ -12,9 +12,10 @@ class StationService
     {
         $model = new Station();
 
-        return Station::whereAny($model->getFillable(), 'LIKE', "%{$request->searchString}%")
-            ->orderBy($request->sortBy, $request->sortType)
-            ->paginate($request->rows);
+        return Station::whereNotIn('id', [1])
+        ->whereAny($model->getFillable(), 'LIKE', "%{$request->searchString}%")
+        ->orderBy($request->sortBy, $request->sortType)
+        ->paginate($request->rows);
     }
 
     public function storeStation($request)
@@ -22,11 +23,13 @@ class StationService
         Station::create($request->all());
     }
 
-    public function editStation($id, $request) {
+    public function editStation($id, $request)
+    {
         Station::find($id)->update($request->all());
     }
 
-    public function deleteStation($id) {
+    public function deleteStation($id)
+    {
         Station::find($id)->delete();
     }
 

@@ -7,8 +7,8 @@ use Inertia\Inertia;
 
 class BrgyStaffController extends Controller
 {
-    public function index() {
-        return Inertia::render('BrgyStaff/brgystaff');
+    public function display() {
+        return Inertia::render('BrgyStaff/BrgyStaff');
     }
 
     public function create() {
