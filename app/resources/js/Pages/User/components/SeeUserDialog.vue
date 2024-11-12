@@ -19,9 +19,7 @@
                     <InputText id="position" v-model="user.position" aria-describedby="position-help" disabled/>
                 </div>
             </div>
-            <div class="">
-                <SeeUserDialogLogs :id="id"/>
-            </div>
+            
         </div>
     </Dialog>
 </template>

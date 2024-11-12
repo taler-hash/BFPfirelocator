@@ -2,7 +2,6 @@
     <div class="">
         <BookingList
             :ownerId="page.props.auth.user.id" 
-            :stationId="page.props.auth.user.station.id"
             :canCreate="true"
             :canEdit="true"
             role="brgy_staff" />

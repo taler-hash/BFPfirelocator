@@ -102,6 +102,20 @@ class BookingService {
         Cache::forget($key);
     }
 
+    public function getBookingCounts($request) {
+        $user = auth()->user();
+
+        return Booking::selectRaw('status, COUNT(*) as count')
+        ->when($user->role === 'admin_staff', function($q) use ($user) {
+            $q->where('station_id', $user->station_id);
+        })
+        ->when($user->role === 'brgy_staff', function($q) use ($user) {
+            $q->where('user_id', $user->id);
+        })
+        ->groupBy('status')
+        ->get();
+    }
+
 
     private function statusCallbacks($request) {
         $statusCallback = [

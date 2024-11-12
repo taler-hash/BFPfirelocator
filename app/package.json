@@ -28,6 +28,7 @@
     "dependencies": {
         "@primevue/themes": "^4.1.1",
         "@vueuse/core": "^11.1.0",
+        "chart.js": "^4.4.6",
         "leaflet": "^1.9.4",
         "leaflet-control-geocoder": "^2.4.0",
         "leaflet-routing-machine": "^3.2.12",

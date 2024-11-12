@@ -32,9 +32,9 @@
                         class="w-full md:w-56" striped />
                 </div>
             </div>
-            <div class="ml-2 w-[320px] h-[500px] overflow-hidden mt-4 sm:mt-0">
+            <div class="ml-2 w-[320px] h-[400px] overflow-hidden mt-4 sm:mt-0">
                 <p class="font-bold">Logs</p>
-                <div class="h-[calc(100%-5rem)] overflow-y-auto overflow-x-hidden">
+                <div class="h-[calc(100%-2rem)] overflow-y-auto overflow-x-hidden">
                     <SeeBookingLogs :logs="bookingLogs"/>
                 </div>
             </div>

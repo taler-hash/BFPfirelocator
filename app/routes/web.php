@@ -105,6 +105,7 @@ Route::middleware(['auth', 'verified'])
         Route::delete('/', 'delete')->name('bookings.delete');
         Route::post('/sendcoords', 'sendCoords')->name('bookings.sendCoords');
         Route::post('/unsetrespondercoords', 'unsetResponderCoords')->name('bookings.unsetResponderCoords');
+        Route::get('/counts', 'counts')->name('bookings.count');
         
     });
 

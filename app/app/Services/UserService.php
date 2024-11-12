@@ -35,8 +35,6 @@ class UserService
         ->orderBy($request->sortBy, $request->sortType)
         ->paginate($request->rows);
 
-        dd($users);
-
         return $users;
     }
 

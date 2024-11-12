@@ -1,15 +1,17 @@
 <template>
     <Select v-model="model" :options="stations?.data" optionLabel="name" optionValue="id" class="w-full md:w-56" filter @filter="onFilter"
+        :disabled="userListProps.role !== 'admin'"
         placeholder="Select Item" />
 </template>
 <script setup lang="ts">
 import Select from 'primevue/select';
 import { StationPaginationTypes } from '@/Pages/Station/types/stationTypes';
-import { onMounted, ref } from 'vue';
+import { inject, onMounted, ref } from 'vue';
 import axios from 'axios';
 import { FilterTypes } from '../types/UserTypes';
 import { useDebounceFn } from '@vueuse/core';
 
+const userListProps = inject<any>('userListProps')
 const model = defineModel<number | null>()
 const stations = ref<StationPaginationTypes>()
 const filters = ref<FilterTypes>({

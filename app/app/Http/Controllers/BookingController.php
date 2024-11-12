@@ -56,4 +56,8 @@ class BookingController extends Controller
     public function unsetResponderCoords(Request $request) {
         $this->bookingService->unsetResponderCoords($request);
     }
+
+    public function counts(Request $request) {
+        return $this->bookingService->getBookingCounts($request);
+    }
 }
