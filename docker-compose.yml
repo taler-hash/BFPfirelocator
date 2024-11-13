@@ -20,15 +20,11 @@ services:
       - 2001:8000
       - 5173:5173
       - 9000:9000
+      - 8080:8080
     build:
       dockerfile: Dockerfile
     depends_on:
       - db
-    command: |
-      bash -c "
-        php artisan reverb:start && 
-        php-fpm
-      "
     networks:
       - bfp_network
   caddy:

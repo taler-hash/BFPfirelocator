@@ -1,7 +1,11 @@
 :80 {
   	tls internal
 	root * /var/www/html/app/public
-	php_fastcgi attendance:9000
+	php_fastcgi app:9000
 	file_server
 	encode gzip
+}
+
+:8080 {
+	reverse_proxy app:8080
 }
