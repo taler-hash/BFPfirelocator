@@ -62,7 +62,6 @@ const bookingProps = inject<any>('bookingProps')
 const bookingResponders = ref<BookingResponderTypes[]>()
 
 function open(props: BookingTypes) {
-    console.log(props)
     booking.value = props
     showBooking()
 }
@@ -94,7 +93,6 @@ async function getBookingLogs() {
 
     if(res.status === 200) {
         bookingLogs.value = res.data
-        console.log(res.data)
     }
 }
 

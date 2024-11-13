@@ -154,7 +154,6 @@ function trackStatus(event: any) {
 }
 
 function handleCompleteBooking() {
-    console.log('im completed')
     emit('complete')
 }
 
