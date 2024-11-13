@@ -26,7 +26,7 @@ To deploy this app you need to follow this steps:
 3. Inside of that folder run a terminal
 4. Clone the app using git
 5. after cloning you should see **BFP Fire Tracker** folder open that folder. To build the app run this command inside of the folder youve just open 
-  - `docker compose build --no-cache app && docker compose up app -d && docker exec -it app chmod 777 -R ./`
+  - `docker compose build --no-cache app && docker compose up app -d && docker exec -it app chmod 777 -R ./ && docker exec -it app cp .env.example .env`
 6. After building the app open another terminal in the same folder run this command
   - `docker exec -it app bash -c "composer install && php artisan config:clear && php artisan migrate:fresh --seed && npm install && npm run build" && docker compose build --no-cache caddy && docker compose up caddy -d && docker exec -it caddy chmod 777 -R ./`
 7. After running the command open another terminal in the same folder run this command to start the web socket
