@@ -1,6 +1,6 @@
 <template>
     <Select v-model="model" :options="stations?.data" optionLabel="name" optionValue="id" class="w-full md:w-56" filter @filter="onFilter"
-        :disabled="userListProps.role !== 'admin'"
+        :disabled="!['admin','admin_staff'].includes(userListProps.role)"
         placeholder="Select Item" />
 </template>
 <script setup lang="ts">

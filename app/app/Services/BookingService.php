@@ -120,7 +120,9 @@ class BookingService {
     private function statusCallbacks($request) {
         $statusCallback = [
             'pending' => function () use ($request) {
-                Booking::find($request->id)->responders()->delete();
+                Booking::find($request->id)->responders()->each(function ($responder) {
+                    $responder->delete();
+                });
             },
             'completed' => function () use ($request) {
                 Cache::pull('booking.'.$request->id);

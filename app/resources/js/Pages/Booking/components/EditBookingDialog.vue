@@ -62,7 +62,7 @@ import InputNumber from 'primevue/inputnumber';
 import InputError from '@/Components/InputError.vue';
 import Button from 'primevue/button';
 import Dialog from 'primevue/dialog';
-import { inject, ref } from 'vue';
+import { inject, provide, ref } from 'vue';
 import { useForm } from '@inertiajs/vue3';
 import { BookingFormTypes, BookingTypes } from '../types/BookingTypes';
 import { useToast } from 'primevue/usetoast';
@@ -76,6 +76,7 @@ interface BookingResponderTypes {
     name: string,
     user: UserTypes
 }
+
 const status = ref<string[]>(['accepted', 'pending'])
 const bookingResponders = ref<BookingResponderTypes[]>()
 const reloadTable = inject<any>('reloadTable')
@@ -165,6 +166,8 @@ function submit() {
         }
     })
 }
+
+provide('userListProps', bookingProps)
 
 defineExpose({
     open
