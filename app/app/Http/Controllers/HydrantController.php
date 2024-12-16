@@ -3,46 +3,44 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Services\HydrantService;
+use Inertia\Inertia;
+use App\Http\Requests\StoreHydrantRequest;
+use App\Http\Requests\EditHydrantRequest;
 
 class HydrantController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    private $hydrantService;
+
+    public function __construct()
     {
-        //
+        $this->hydrantService = new HydrantService();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+    public function display() {
+        return Inertia::render('Hydrant/Hydrant');
+    }
+    
+    public function index(Request $request) {
+        $hydrants = $this->hydrantService->getHydrants($request);
+
+        return response()->json($hydrants);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+    public function store(StoreHydrantRequest $request) {
+        $this->hydrantService->storeHydrant($request);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
+    public function show() {
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+    public function edit($id, EditHydrantRequest $request) {
+        $this->hydrantService->editHydrant($id, $request);
+    }
+
+    public function delete($id) {
+        $this->hydrantService->deleteHydrant($id);
     }
 }
+

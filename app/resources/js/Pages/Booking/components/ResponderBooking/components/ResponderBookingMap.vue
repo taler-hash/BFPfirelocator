@@ -9,10 +9,11 @@ import L from 'leaflet'
 import { ViewTypes } from '@/Pages/User/types/UserTypes';
 import { onBeforeUnmount, onMounted, provide, ref, watch } from 'vue';
 import BookingResponderMapDetail from './ResponderBookingMapDetail.vue';
-import { FireIcon, StationIcon, FireFightericon } from '@/Api/Icons';
+import { FireIcon, StationIcon, FireFightericon, HydrantIcon } from '@/Api/Icons';
 import 'leaflet-routing-machine'
 import axios from 'axios';
 import { useIntervalFn } from '@vueuse/core';
+import { HydrantTypes } from '@/Pages/Hydrant/types/hydrantTypes';
 
 const emit = defineEmits(['complete', 'cancelled'])
 const { pause } = useIntervalFn(() => {getCurrentPosition()}, 2000) 
@@ -29,6 +30,7 @@ const currentPosition = ref<{ latitude: number, longitude: number, marker?: any 
     marker: undefined
 })
 const watchId = ref<any>()
+const hydrants = ref<HydrantTypes[]>([])
 
 onMounted(() => {
     initMap()
@@ -37,6 +39,7 @@ onMounted(() => {
     addRoutePath()
     !props.isResponder && pause()
     initLive()
+    getHydrants()
 })
 
 onBeforeUnmount(() => {
@@ -113,6 +116,29 @@ function error(error: any) {
         navigator.geolocation.clearWatch(watchId.value)
         getCurrentPosition()
     }
+}
+
+function getHydrants() {
+    const filters = {
+        all: true
+    }
+
+    axios.get(route('hydrants.index'), {params: filters})
+    .then((res) => {
+        hydrants.value = res.data
+
+        markHydrants()
+    })
+    .catch(err => {
+        console.error(err)
+    })
+}
+
+function markHydrants() {
+    hydrants.value.map((item) => {
+        const { longitude, latitude } = item
+        L.marker([latitude, longitude], { icon: HydrantIcon}).addTo(map.value)
+    })
 }
 
 const options = {

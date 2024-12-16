@@ -1,15 +1,19 @@
 <?php 
 
 namespace App\Services;
+use App\Models\Hydrant;
 
 class HydrantService {
 
     public function getHydrants($request)
     {
+        if($request?->all) {
+            return Hydrant::all();
+        }
+
         $model = new Hydrant();
 
-        return Hydrant::whereNotIn('id', [1])
-        ->whereAny($model->getFillable(), 'LIKE', "%{$request->searchString}%")
+        return Hydrant::whereAny($model->getFillable(), 'LIKE', "%{$request->searchString}%")
         ->orderBy($request->sortBy, $request->sortType)
         ->paginate($request->rows);
     }

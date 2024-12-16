@@ -1,23 +1,10 @@
 import { InjectionKey } from "vue"
 
-interface StationTypes {
+interface HydrantTypes {
     id?: number,
     name?: string,
-    location?: string,
-    longitude?: number|undefined,
-    latitude?: number|undefined,
-    updated_at?: string,
-    created_at?: string
-}
-
-interface StationWithUserTypes {
-    users: UserTypes[]
-}
-
-interface UserTypes {
-    id?: number,
-    name: string,
-    position?: string,
+    longitude: number,
+    latitude: number,
     updated_at?: string,
     created_at?: string
 }
@@ -30,12 +17,8 @@ interface PaginationTypes {
     total: number,
 }
 
-export interface StationPaginationTypes extends PaginationTypes {
-    data:StationTypes[]
-}
-
-export interface StationWithUserPaginationTypes extends PaginationTypes {
-    data:  StationWithUserTypes[]
+export interface HydrantPaginationTypes extends PaginationTypes {
+    data:HydrantTypes[]
 }
 
 interface FilterTypes {
@@ -57,7 +40,7 @@ export interface ViewTypes {
 export type SetViewKeyType = InjectionKey<(values: ViewTypes) => void>
 
 export {
-    type StationTypes,
+    type HydrantTypes,
     type PaginationTypes,
     type FilterTypes
 }

@@ -23,7 +23,6 @@ const view = ref<ViewTypes>({
     zoom: 9
 })
 
-//tiwasa ni mag edit sa map di makita ang pin point
 onMounted(() => {
     initMap()
 })

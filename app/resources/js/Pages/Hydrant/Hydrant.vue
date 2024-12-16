@@ -1,11 +1,11 @@
 <template>
 
-    <Head title="Stations" />
+    <Head title="Hydrants" />
 
     <AuthenticatedLayout>
         <template #header>
             <h2 class="text-xl font-semibold leading-tight text-gray-800">
-                Stations
+                Hydrants
             </h2>
         </template>
 

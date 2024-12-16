@@ -16,6 +16,7 @@ use App\Http\Controllers\ResponderController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\StationController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\HydrantController;
 use App\Models\BookingResponder;
 
 Route::get('/', function () {
@@ -120,6 +121,20 @@ Route::middleware(['auth', 'verified'])
         Route::put('/', 'bulkEdit')->name('bookingresponders.bulkEdit');
         Route::delete('/{id}', 'delete')->name('bookingresponders.delete');
         Route::get('/getongoingbooking', 'getOnGoingBooking')->name('bookingresponders.getOnGoingBooking');
+    });
+
+    //Hydrants
+    Route::controller(HydrantController::class)
+    ->middleware(['role:admin_staff'])
+    ->prefix('/hydrants')
+    ->name('hydrants.')
+    ->group(function () {
+        Route::get('/display', 'display')->name('display');
+        Route::get('/', 'index')->name('index');
+        Route::post('/', 'store')->name('store');
+        Route::get('/{id}', 'show')->name('show');
+        Route::put('/{id}', 'edit')->name('edit');
+        Route::delete('/{id}', 'delete')->name('delete');
     });
 
     //Logs

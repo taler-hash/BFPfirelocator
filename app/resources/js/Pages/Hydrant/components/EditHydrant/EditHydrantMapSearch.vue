@@ -19,7 +19,7 @@ import InputText from 'primevue/inputtext';
 import { ref, inject, Ref } from 'vue';
 import { useDebounceFn } from '@vueuse/core';
 import ProgressSpinner from 'primevue/progressspinner';
-import { SetViewKeyType } from '../../types/stationTypes';
+import { SetViewKeyType } from '../../types/hydrantTypes';
 
 interface ResultTypes {
     place_id: number;
