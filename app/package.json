@@ -30,6 +30,7 @@
         "@vueuse/core": "^11.1.0",
         "chart.js": "^4.4.6",
         "leaflet": "^1.9.4",
+        "concurrently": "^9.1.0",
         "leaflet-control-geocoder": "^2.4.0",
         "leaflet-routing-machine": "^3.2.12",
         "moment": "^2.30.1",
