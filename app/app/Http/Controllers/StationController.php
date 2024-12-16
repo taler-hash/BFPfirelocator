@@ -25,7 +25,7 @@ class StationController extends Controller
     public function index(Request $request) {
         $stations = $this->stationService->getStations($request);
 
-        return response($stations);
+        return response()->json($stations);
     }
 
     public function store(StoreStationRequest $request) {

@@ -2,4 +2,6 @@ FROM caddy:2
 
 WORKDIR /var/www/html/app
 
+RUN apk add nss-tools
+
 COPY ./app .

@@ -27,21 +27,23 @@ services:
       - db
     networks:
       - bfp_network
-  caddy:
-    image: caddy:2
-    container_name: caddy
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile
-      - ./app:/var/www/html/app
-    build: 
-      dockerfile: Dockerfile.caddy
-    ports:
-      - 80:80
-      - 443:443
-    depends_on:
-      - app
-    networks:
-      - bfp_network
+    working_dir: /var/www/html/app
+    command: composer run dev
+  # caddy:
+  #   image: caddy:2
+  #   container_name: caddy
+  #   volumes:
+  #     - ./Caddyfile:/etc/caddy/Caddyfile
+  #     - ./app:/var/www/html/app
+  #   build: 
+  #     dockerfile: Dockerfile.caddy
+  #   ports:
+  #     - 80:80
+  #     - 443:443
+  #   depends_on:
+  #     - app
+  #   networks:
+  #     - bfp_network
 networks:
   bfp_network:
     driver: bridge

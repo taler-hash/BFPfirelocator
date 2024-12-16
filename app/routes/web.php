@@ -32,8 +32,8 @@ Route::middleware(['auth', 'verified'])
 
     //Station
     Route::controller(StationController::class)
-    ->prefix('/stations')
     ->middleware(['role:admin|admin_staff'])
+    ->prefix('/stations')
     ->group(function () {
         Route::get('/display', 'display')->name('stations.display');
         Route::get('/', 'index')->name('stations.index');
