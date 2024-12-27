@@ -114,7 +114,7 @@ const handleSearch = useDebounceFn(() => {
 
 function handleDeleteStation(id: number) {
     confirm.require({
-        message: 'Are you sur you want to delete this Station',
+        message: 'Are you sure you want to delete this Station',
         header: 'Confirmation',
         icon: 'pi pi-info-circle',
         accept: () => {

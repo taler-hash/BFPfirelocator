@@ -17,7 +17,7 @@
 </template>
 <script setup lang="ts">
 import Dialog from 'primevue/dialog';
-import { ref } from 'vue';
+import { provide, ref } from 'vue';
 import SeeMap from '@/Components/SeeMap/SeeMap.vue';
 import SeeStationDetails from './SeeStationDetails.vue';
 import { StationTypes } from '../../types/stationTypes';
@@ -27,13 +27,14 @@ const visible = ref<boolean>(false)
 const station = ref<StationTypes>({
     longitude: 0,
     latitude: 0,
-    
 })
 
 function open(props: StationTypes) {
     station.value = props
     visible.value = true
 }
+
+provide('station', station)
 
 defineExpose({
     open

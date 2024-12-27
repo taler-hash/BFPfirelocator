@@ -130,12 +130,12 @@ Route::middleware(['auth', 'verified'])
     ->name('hydrants.')
     ->group(function () {
         Route::get('/display', 'display')->name('display');
-        Route::get('/', 'index')->name('index');
         Route::post('/', 'store')->name('store');
         Route::get('/{id}', 'show')->name('show');
         Route::put('/{id}', 'edit')->name('edit');
         Route::delete('/{id}', 'delete')->name('delete');
     });
+    Route::get('/hydrants', [HydrantController::class, 'index'])->name('hydrants.index');
 
     //Logs
     Route::controller(ActivityLogController::class)

@@ -28,5 +28,4 @@ import InputNumber from 'primevue/inputnumber';
 import { inject } from 'vue';
 
 const station = inject<any>('station')
-
 </script>
