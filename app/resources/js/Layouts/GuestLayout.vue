@@ -9,7 +9,7 @@ import { Link } from '@inertiajs/vue3';
     >
         <div class="flex items-center flex-col">
             <Link href="/">
-                <ApplicationLogo class="h-20 w-20 fill-current text-gray-500" />
+                <ApplicationLogo size="base" class="h-20 w-20 fill-current text-gray-500" />
             </Link>
             <p class="font-bold text-2xl">Bureau of Fire Protection</p>
             <p class="text-sm font-medium">Fire Locator</p>
