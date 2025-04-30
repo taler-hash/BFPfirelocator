@@ -177,6 +177,11 @@ const links = ref<{ label: string, route: string, canSee: boolean }[]>([
         canSee: (['admin_staff']).includes(page.props.auth.user.role)
     },
     {
+        label: 'Hydrants',
+        route: 'hydrants.display',
+        canSee: (['admin_staff']).includes(page.props.auth.user.role)
+    },
+    {
         label: 'Bookings',
         route: 'bookings.display',
         canSee: true
